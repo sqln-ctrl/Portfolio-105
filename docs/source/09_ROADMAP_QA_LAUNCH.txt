@@ -1,0 +1,78 @@
+STUDIO 105
+Studio 105 — Roadmap, QA & Launch
+Milestones and definition of done
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+1. Milestone plan
+Milestone
+Deliverables
+Exit criteria
+M0 Direction
+Three visual directions, chosen type pair, palette, grid, 105 concepts.
+One approved direction.
+M1 Shell
+Next app scaffold, nav, footer, typography, responsive layout.
+Clean static site with no major UI defects.
+M2 Home
+Hero, work preview, services, process, about, CTA.
+Complete content flow without advanced WebGL.
+M3 Motion
+Text, reveals, transitions, scroll choreography.
+Motion coherent on desktop and mobile.
+M4 WebGL
+Procedural 105 object + selected section effect.
+60 FPS target on desktop, graceful fallback.
+M5 Projects
+Case study template + selected projects.
+All case studies complete and reviewed.
+M6 QA
+Accessibility, browser, performance, SEO, content.
+No P0/P1 blockers.
+M7 Launch
+Production deploy, analytics if approved, domain, monitoring.
+Live and stable.
+2. Definition of done for any visual feature
+Matches the approved design direction.
+Works at desktop and mobile breakpoints.
+Has keyboard and reduced-motion behavior where relevant.
+Does not introduce layout shift or obvious performance regression.
+Uses reusable code; no one-off spaghetti timeline if the behavior is shared.
+Has a screenshot-based visual verification result.
+3. Browser matrix
+Chrome / Chromium desktop.
+Safari desktop and iOS Safari.
+Firefox desktop.
+At least one Android Chromium test.
+Use BrowserStack when hardware coverage is needed.
+4. Accessibility QA
+Semantic headings.
+Keyboard navigation.
+Visible focus states.
+Sufficient contrast.
+Alt text for meaningful images.
+Reduced-motion support.
+No critical interaction dependent on hover alone.
+5. Performance QA
+Check Core Web Vitals and page weight.
+Audit images and fonts.
+Inspect WebGL frame rate.
+Disable WebGL cleanly when unsupported or when user chooses reduced motion if appropriate.
+Measure mobile performance, not just desktop.
+6. Final visual review questions
+1. Does the site look intentional with motion disabled?
+2. Can a visitor understand the studio in five seconds?
+3. Do the service cards feel custom rather than generic?
+4. Is the 105 identity memorable?
+5. Does any animation compete with content?
+6. Are the projects presented honestly?
+7. Does the site feel like Studio 105 rather than a Trionn imitation?
+8. Would Umer and Saqlain be proud to call it their first studio flagship?
+7. Launch checklist
+Domain + favicon + social preview.
+Metadata and sitemap.
+404 / error states.
+Contact path tested.
+Production build passes.
+No broken asset links.
+No console errors in normal flows.
+No secret keys committed.
+Vercel preview reviewed before production.

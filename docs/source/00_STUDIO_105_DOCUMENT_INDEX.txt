@@ -1,0 +1,54 @@
+STUDIO 105
+Studio 105 Documentation System
+Master index for the Cursor build
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+Purpose: give Cursor one coherent source of truth so the team can design and build Studio 105 from a blank canvas, not recycle the old portfolio.
+What Studio 105 is
+Studio 105 is a new digital studio started by Umer and Saqlain, roommates whose studio identity comes from Room 105. The room number is the origin story, not a visual limitation. The site must feel like a capable modern creative-tech studio that can design, build, animate and ship polished digital products.
+Non-negotiable reset
+Do not import the old portfolio as a base.
+Do not reuse its theme, layout, frontend architecture, icons, 3D assets, graphics, component library or visual language.
+Do not crawl the founders' old repositories to auto-populate portfolio work.
+GitHub profiles are references only; projects are selected deliberately later.
+Blender is optional and not a prerequisite. Prefer procedural Three.js, SVG, shaders, 2.5D and licensed/open GLB assets.
+Document set
+File
+Use it for
+01_MASTER_STRATEGY.docx
+Brand/product positioning, principles, scope, decisions and constraints.
+02_DESIGN_DIRECTION.docx
+Visual identity, art direction, typography, color, grid, components and design rules.
+03_UX_IA_PAGE_FLOW.docx
+Information architecture, page structure, user journeys and section-by-section behavior.
+04_MOTION_INTERACTION.docx
+Motion language, scroll choreography, cursor, hover, transitions, reduced motion and interaction states.
+05_3D_CREATIVE_TECH.docx
+Procedural 3D, shaders, WebGL, asset sourcing, 2.5D, performance and signature 105 object.
+06_TECHNICAL_ARCHITECTURE.docx
+Next.js/React/TypeScript stack, folder architecture, rendering strategy, performance and deployment.
+07_CURSOR_AGENT_MANUAL.docx
+Exact instructions for Cursor, plugin install list, workflow, guardrails and verification protocol.
+08_CONTENT_PROJECTS.docx
+Services, site copy framework, project intake and GitHub selection rules.
+09_ROADMAP_QA_LAUNCH.docx
+Phases, milestones, definition of done, visual QA, accessibility, performance and launch checklist.
+Current service pillars
+Service
+Meaning
+AI Agents
+Task-oriented AI agents that do useful work, not only chat.
+Automations
+Systems that remove repetitive steps between tools and workflows.
+Web Development
+Marketing websites, dashboards, web apps and interactive experiences.
+App Development
+Cross-platform mobile applications from prototype to release.
+Ecommerce Solutions
+Storefronts, headless commerce and conversion-focused commerce systems.
+Content Management
+CMS builds and editorial workflows that let teams publish independently.
+Primary references
+Trionn technical case study: https://tympanus.net/codrops/2026/07/15/the-architecture-behind-trionn-coordinating-gsap-three-js-lenis-and-web-audio/
+Cursor Marketplace: https://cursor.com/marketplace
+Umer GitHub: https://github.com/SMPanther
+Saqlain GitHub: https://github.com/sqln-ctrl

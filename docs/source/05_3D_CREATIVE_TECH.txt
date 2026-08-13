@@ -1,0 +1,78 @@
+STUDIO 105
+Studio 105 — 3D & Creative Technology Strategy
+3D without Blender dependency
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+Blender is optional. Studio 105 v1 must be buildable without learning Blender. Use code-driven 3D first, then add external assets only when they add real value.
+1. Asset strategy
+Method
+Use
+Priority
+Procedural Three.js
+105 object, geometry, lines, particles, simple forms.
+P0
+SVG + GSAP
+Brand marks, diagrams, paths, wire graphics.
+P0
+2.5D / depth shader
+Posters, portraits, project art, layered scenes.
+P1
+Licensed/open GLB
+Characters, detailed props, environments when necessary.
+P1
+Spline
+Optional fast visual prototyping.
+P2
+Blender
+Optional later for original high-complexity assets.
+P3
+2. The signature 105 object
+Construct from 3–10 simple meshes or custom lines.
+Use three conceptual states: assembled, active, exploded.
+Idle: slow drift and rotation.
+Pointer: magnetic tilt and localized highlight.
+Hold: gradual separation, spark / line response optional.
+Scroll: change scale, rotation, orbit or topology between sections.
+Keep materials simple enough to render quickly.
+3. Possible visual forms
+Form
+Description
+Panel 105
+Three beveled panels make the digits through negative space.
+Wire 105
+Thin metallic / glowing line network, suitable for SVG + WebGL hybrid.
+Orbital 105
+Digits become curved bands orbiting a central point.
+Stack 105
+Three layered slabs offset in Z, creating a typographic sculpture.
+Cut 105
+A solid block with the 105 carved through it.
+4. Shader ideas for later
+Fresnel rim light for glass/metal edge response.
+Noise displacement for subtle surface motion.
+Depth-based parallax for 2.5D artwork.
+Dissolve / reveal mask for project transitions.
+Procedural fog for a footer atmosphere.
+Chromatic or scanline effect only as a rare accent, not a global filter.
+5. Interaction logic
+Prefer continuous values over separate animation branches. Example: explodeAmount = 0 assembled → 1 exploded. Pointer, scroll and hold can contribute to the same target value. This makes releasing halfway feel natural because the object simply interpolates toward the new state.
+6. Asset sourcing rules
+Use only assets with clear commercial-use permission when the site is commercial.
+Record source and license in an ASSETS.md file.
+Compress GLB and textures before integration.
+Do not ship giant source textures to the browser.
+If an asset cannot be explained/licensed, do not ship it.
+7. Performance rules
+Keep one main hero WebGL renderer where possible.
+Pause expensive render loops when the scene is off-screen.
+Use IntersectionObserver / ScrollTrigger state to activate only what is needed.
+Avoid unnecessary post-processing.
+Prefer lightweight line and geometry effects over huge particle counts.
+Test mid-range mobile, not only a desktop GPU.
+8. No-Blender learning path
+1. Three.js basics: scene, camera, renderer, geometry, material, light.
+2. Pointer interaction and raycasting.
+3. GLTF/GLB loading only when required.
+4. GSAP synchronisation.
+5. Custom shader fundamentals.
+6. 2.5D depth effect.
+7. Performance profiling.

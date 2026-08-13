@@ -1,0 +1,21 @@
+STUDIO 105 — CURSOR PLUGIN SETUP
+
+Run these in Cursor Marketplace / Agent commands as available:
+
+/add-plugin figma
+/add-plugin gsap
+/add-plugin superpowers
+/add-plugin react-doctor
+/add-plugin context7-plugin
+/add-plugin browse
+/add-plugin browserstack
+/add-plugin vercel
+
+Magic Patterns: install from the Cursor Marketplace (use the official Marketplace entry) if available to your Cursor version.
+
+IMPORTANT:
+- Do not auto-import the old portfolio.
+- Do not auto-import GitHub repositories into the site.
+- Use Figma/Magic Patterns for exploration, not as final brand authority.
+- Ask for authentication only when a plugin requires it.
+- Verify every plugin is official/verified in the current Marketplace before use.

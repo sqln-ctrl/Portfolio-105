@@ -1,0 +1,72 @@
+STUDIO 105
+Studio 105 — Master Strategy
+A new studio, new identity, new digital flagship
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+The website is a flagship product, not a reskin of any previous portfolio. The goal is to make the site itself evidence that Studio 105 can think, design, engineer and craft.
+1. Brand origin
+Umer and Saqlain are roommates. Room 105 became the studio origin, giving the name a real story: two people building things from the same room and turning that shared environment into a studio identity. The story should feel authentic rather than sentimental.
+2. Positioning
+Studio 105 should sit between digital studio, product engineering shop and creative technology lab. We are not trying to look like a traditional software house. We should communicate that we can handle strategy, interface design, engineering, automation and AI while caring about visual detail and interaction.
+3. Experience objective
+Objective
+Desired reaction
+Immediate credibility
+“These people know what they are doing.”
+Curiosity
+“What happens if I interact with this?”
+Clarity
+“I understand what they make and why it matters.”
+Craft
+“This is custom, not a template.”
+Trust
+“They can actually build the thing.”
+Personality
+“There are real people behind this studio.”
+4. Experience principles
+1. Design first; effects second.
+2. Motion should explain hierarchy or interaction, not merely decorate.
+3. Use a small number of signature visual systems rather than many unrelated effects.
+4. Keep content as real HTML whenever possible; use WebGL as enhancement.
+5. Make the site feel physical: depth, inertia, spring, tension, magnetic response, assembly/disassembly.
+6. Keep a clear path to work and contact.
+7. Mobile must be intentionally designed, not desktop squeezed smaller.
+8. Accessibility and performance are design constraints, not post-processing chores.
+5. Signature concept: 105 as a living system
+The most ownable visual idea is a procedural “105” object. It should be derived from the number rather than being a generic 3D blob. The object can be composed of panels, rings, lines or blocks. It can assemble on load, subtly orbit in idle, respond to the pointer, separate when held, and transform during scrolling. The number can become a symbol without forcing the entire brand to look like a mathematical company.
+6. Scope of flagship site
+Home — the full studio introduction and interactive storytelling.
+Work — curated project index plus detailed case studies.
+Services — six service pillars from the supplied reference.
+About — studio origin, approach and people.
+Blog / Notes — optional phase-one or phase-two publishing surface.
+Contact — concise conversion path, not a generic form dump.
+7. Phase strategy
+Phase
+Target
+0 — Discovery
+Direction, moodboards, references, content inventory, interaction ideas.
+1 — Foundation
+Next.js scaffold, design tokens, responsive shell, typography and content structure.
+2 — Motion
+GSAP system, text reveals, page transitions, scroll choreography.
+3 — Signature 3D
+Procedural 105 object and selected WebGL scenes.
+4 — Case studies
+Real project storytelling and editorial polish.
+5 — QA
+Performance, accessibility, mobile, browser testing, SEO.
+6 — Launch
+Vercel deploy, analytics, final content, domain and monitoring.
+8. What success looks like
+The first screen can be described in one sentence.
+The visual system would still feel strong with 3D turned off.
+Every major motion has a reason.
+The site does not feel like a copy of Trionn or another award site.
+The 105 motif is recognizable but not repetitive.
+A visitor can reach a strong project story or contact action without fighting the experience.
+9. What must never happen
+Do not clone or closely imitate Trionn scenes, typography, brand marks or interactions. Use it only as a technical/quality reference.
+Do not allow AI to make unilateral brand decisions when the design brief is silent. Propose options.
+Do not add a dependency just to imitate an effect that can be achieved simply.
+Do not let 3D become the content.
+Do not ship unoptimized demo assets.

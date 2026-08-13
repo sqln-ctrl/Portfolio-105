@@ -1,0 +1,81 @@
+STUDIO 105
+Studio 105 — Motion & Interaction Specification
+How the site should move
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+Motion system rule: one shared emotional language. Motion should feel physical, deliberate and slightly engineered—not like a bag of animation presets.
+1. Motion principles
+Enter with intention; do not animate everything on page load.
+Use a small family of easings and durations.
+Prefer spring / inertia for physical objects and clean ease curves for editorial text.
+Use scrubbed animation only where scroll position conveys progress.
+Build interactions from state, not from dozens of disconnected timelines.
+2. Motion vocabulary
+Pattern
+Use
+Blur-to-sharp reveal
+Hero and section headings.
+Clip reveal
+Large editorial statements and images.
+Offset / settle
+Cards and utility labels.
+Magnetic response
+Primary CTA, 105 object, selected controls.
+Spring return
+Physical objects after pointer release.
+Pinned choreography
+Process and selected storytelling sections.
+Assembly / disassembly
+105 signature object and selected project moments.
+Texture / noise drift
+Background atmosphere, used very lightly.
+3. Shared state model
+Avoid letting every component own its own interpretation of scroll. A section-level progress value should drive all related elements: object position, typography progress, image frame, background tone, card visibility and transition progress. This mirrors the unified architecture described in Trionn's published case study, where a normalized progress value coordinates multiple systems. Source: https://tympanus.net/codrops/2026/07/15/the-architecture-behind-trionn-coordinating-gsap-three-js-lenis-and-web-audio/
+4. Cursor
+Default: small neutral pointer enhancement.
+Link hover: directional or ring state.
+Project hover: “View” / category state.
+3D hero hover: subtle attraction and intensity change.
+Never hide the OS pointer if the custom cursor could create ambiguity.
+Disable or simplify custom cursor on touch devices.
+5. Hero sequence
+Moment
+Behavior
+0–0.3s
+Background and shell settle in.
+0.3–0.9s
+Identity / 105 mark enters.
+0.8–1.5s
+Headline reveals by line or character with restrained blur.
+1.2–2.0s
+105 object completes its assembly and becomes interactive.
+After ready
+Idle drift + pointer response begin.
+Scroll
+Object morphs / travels; text changes hierarchy.
+6. Scroll choreography ideas
+Work: project cards enter from different directions then settle into an editorial composition.
+Services: one progress driver controls an abstract visual, card emphasis and section color shift.
+Process: pin a central visual and transform it through the four stages.
+About: use a 2.5D depth image or layered graphic instead of a heavy 3D scene.
+7. Micro-interactions
+Interaction
+Response
+CTA hover
+3–8px magnetic pull + label shift + restrained highlight.
+Card hover
+Image crop/scale, metadata offset, small cursor state.
+Service hover
+One local graphic animates; do not move the whole grid.
+Navigation hover
+Underline or displacement; keep stable layout.
+Copy action
+Tiny status confirmation; no dramatic animation.
+8. Page transitions
+Use page transitions only if they support the idea that Studio 105 is one continuous environment. A short curtain, line sweep, or typography wipe is enough. The transition should never become a loading obstacle.
+9. Reduced motion
+Respect prefers-reduced-motion.
+Replace large transforms, parallax and scrub with fades or instant state changes.
+Keep meaning and hierarchy even when motion is removed.
+Do not hide essential navigation or content behind animation.
+10. Audio
+Audio is optional, not default. If used, it should be user-initiated or clearly tied to interaction. Start muted. Prefer small synthesized cues for hover/assembly rather than a constant soundtrack. A future footer or 105 interaction can use Web Audio, inspired technically by Trionn, but this should be phase two rather than launch-critical.

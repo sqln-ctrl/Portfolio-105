@@ -1,0 +1,86 @@
+STUDIO 105
+Studio 105 — Cursor Agent Manual
+How Cursor should work on the project
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+Cursor is the primary implementation environment. The agent must behave like a senior product designer + creative technologist + frontend engineer, but it must preserve human approval for major visual decisions.
+1. First command: establish the project rules
+Before writing product code, read all Studio 105 docs in the /docs folder, summarize constraints, create a plan, and identify any ambiguities. Do not start by scanning old portfolio repos or copying existing components.
+2. Install recommended Cursor plugins
+Plugin
+Command
+Why
+Figma
+/add-plugin figma
+Design context, design-to-code workflows and Figma MCP.
+Magic Patterns
+Use the marketplace plugin
+Rapid visual exploration and UI inspiration; use as a prototyping aid, not as a copy source.
+GSAP
+/add-plugin gsap
+Official GSAP guidance for timelines, ScrollTrigger and performance.
+Superpowers
+/add-plugin superpowers
+Structured brainstorming, plans, debugging and implementation workflow.
+React Doctor
+/add-plugin react-doctor
+React diagnostics, accessibility, bundle and architecture audits.
+Context7
+/add-plugin context7-plugin
+Version-specific library documentation and examples.
+Browse / Browserbase
+/add-plugin browse
+Browser interaction, screenshots, local visual verification.
+BrowserStack
+/add-plugin browserstack
+Cross-device/browser testing when needed.
+Vercel
+/add-plugin vercel
+Deployment and Next/Vercel workflows.
+Cursor now supports plugins as bundles of MCP servers, skills, rules, subagents and hooks; the official Marketplace is the source of truth for available plugin slugs. Some plugins require sign-in/authorization. Do not invent credentials; pause and ask the human only when authentication is required. Sources: https://cursor.com/marketplace and https://cursor.com/blog/marketplace
+3. Recommended setup sequence
+1. Open a fresh repository named for Studio 105.
+2. Install the core design/development plugins above.
+3. Read the Studio 105 docs before generating files.
+4. Create /docs and copy the source docs into the repo.
+5. Create AGENTS.md or the project rules file summarizing the non-negotiables.
+6. Create a design exploration plan before the first production page.
+7. Implement the design system before advanced interactions.
+4. Mandatory agent behavior
+Before creative work, brainstorm options and state tradeoffs.
+Before architecture changes, write a short plan.
+After each major visual feature, run the site and capture screenshots.
+Do not mark work complete without visual verification.
+Do not replace a human-selected visual direction with a new one without approval.
+Do not bulk-import code/assets from old portfolios.
+When using a library, consult current documentation first, preferably through Context7.
+Keep a decision log in /docs/DECISIONS.md.
+5. Design exploration workflow
+1. Generate 3 concept directions for the section.
+2. Compare them against Studio 105 principles.
+3. Select one direction only after review.
+4. Create a visual prototype.
+5. Build the reusable component/token system.
+6. Only then add complex motion or 3D.
+6. Prompt template for Cursor tasks
+Use this task format:GOAL — what should change.CONTEXT — which doc/section this relates to.CONSTRAINTS — visual, UX and technical rules.REFERENCES — URLs or screenshots that are inspiration only.PLAN — proposed implementation steps.VERIFY — exact checks/screenshots/tests to run.DONE WHEN — acceptance criteria.
+7. Visual QA protocol
+Run dev server.
+Capture desktop screenshot at the target breakpoint.
+Capture mobile screenshot.
+Inspect spacing, typography, hierarchy, overflow and animation start/end states.
+Check reduced-motion mode.
+Check keyboard navigation for interactive content.
+Run React Doctor before major merges.
+Use browser automation or BrowserStack when the change is viewport-sensitive.
+8. Design plugin usage rules
+Figma is for deliberate design, not automatic decoration.
+Magic Patterns can be used to explore alternatives, then the chosen direction is rebuilt intentionally in the codebase.
+Do not treat AI-generated visual output as brand truth.
+GSAP plugin should be used for motion guidance before inventing custom animation utilities.
+9. Security / autonomy
+Never expose API keys in code or commit history.
+Do not run destructive shell commands without confirmation.
+Do not change production deployment settings casually.
+Do not add third-party analytics/tracking without explicit approval.
+10. Suggested AGENTS.md headline rules
+“Studio 105 is a from-scratch build. Never import or imitate the old portfolio. Use Room 105 only as the origin story. Design before coding. Use motion as communication. Use Three.js procedurally before external 3D. Preserve accessibility and performance. Ask before making major brand-level decisions.”

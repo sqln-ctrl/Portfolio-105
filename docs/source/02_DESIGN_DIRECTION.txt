@@ -1,0 +1,94 @@
+STUDIO 105
+Studio 105 — Design Direction
+Visual identity and art direction from zero
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+Reference image supplied by the founders. Treat this only as a reference for the service-card information and general content intent—not as the final visual direction.
+The screenshot is a content reference. The final Studio 105 visual system must be newly designed and does not need to resemble the screenshot.
+1. Creative direction
+We should explore 2–3 strong visual territories before committing. The baseline should be dark or high-contrast enough for motion and WebGL, but the studio does not have to be “dark website = creative studio.” The final palette, type pairing and graphic language must be authored for Studio 105.
+2. Direction candidates
+Direction
+Traits
+Risk
+Precision / Atelier
+Editorial typography, architectural grid, restrained metallic accent, technical diagrams.
+Could feel too corporate if over-controlled.
+Kinetic / Experimental
+Large type, asymmetry, visible motion, procedural graphics, bold transitions.
+Could become noisy or gimmicky.
+Warm / Human-Tech
+Dark neutral base, warm accent, tactile surfaces, human photography, subtle 3D.
+Can drift toward generic SaaS if too soft.
+Recommendation: start with Precision / Atelier as the structural foundation, borrow Kinetic / Experimental motion, and use a small amount of Warm / Human-Tech to keep the studio from feeling sterile.
+3. Color system
+Token
+Role
+Guidance
+Ink
+Primary dark canvas
+Near-black navy; avoid pure black everywhere.
+Paper
+Primary light surface
+Warm white / cream for contrast moments.
+Signal
+Brand accent
+Muted gold / amber; reserved for key actions and identity.
+Fog
+Secondary surface
+Cool desaturated blue-grey for layers and panels.
+Line
+Borders
+Low-contrast rules; never full-white grids everywhere.
+Alert
+System feedback
+Only for status/error contexts.
+Use contrast as hierarchy. The gold accent should mean something: primary CTA, active state, important metric, or the 105 mark. If every element is gold, nothing is premium.
+4. Typography
+Display face: high-contrast or characterful serif OR a distinctive modern grotesk; test multiple options in the design phase.
+Body face: highly legible sans serif with excellent numerals and UI readability.
+Use typography as the primary visual asset: oversized statements, clipping, tracking changes, responsive line breaks.
+Avoid default “tech landing page” typography stacks unless intentionally chosen.
+5. Grid and layout
+Desktop: generous outer margins and a strict invisible column system.
+Let selected sections break the grid deliberately.
+Use large negative space to create tension before dense information.
+Cards should feel composed, not like generic dashboard tiles.
+Project imagery can overlap the grid when the content benefits from it.
+6. Navigation
+Navigation should feel like an instrument panel rather than a standard SaaS navbar. Keep the wordmark and 105 mark left. Primary links can be Services, Work, Notes/Blog, About, with a strong Contact/Book a call action. On mobile, use a full-screen or near-full-screen menu with a short transition rather than a tiny drawer.
+7. Components
+Component
+Design behavior
+Primary CTA
+Solid accent, restrained radius, magnetic hover, clear text.
+Text link
+Arrow / directional cue, subtle underline or offset on hover.
+Project card
+Image-led, editorial metadata, strong hover state, no noisy badges.
+Service card
+Large title, concise proof-oriented copy, simple line icon or custom glyph; not stock icon overload.
+Tag / label
+Small uppercase utility label, used sparingly.
+Section marker
+Small mono/utility label to anchor navigation and scroll position.
+8. Graphic language
+Use geometric lines, grids, procedural marks, subtle texture and custom symbols.
+Prefer a small custom icon family over random library icons.
+Any icon should be drawn to match the stroke, corner and visual weight rules.
+Motion can reveal geometry that becomes static brand vocabulary later.
+9. Imagery
+Use original project imagery wherever possible.
+Avoid fake “agency team at laptops” stock photography.
+If founder photography is used, art-direct it and keep it consistent.
+For concept visuals, use generated/abstract imagery only when clearly treated as concept art.
+10. 105 mark system
+Design a family of 105 marks, not a single logo. Primary lockup: 105 + Studio 105. Secondary: geometric 105 symbol. Micro mark: a tiny 105 stamp for browser favicon, loading state and section markers. The symbol should be able to fragment into three states: assembled, active, exploded.
+11. Design anti-patterns
+No glassmorphism by default.
+No excessive rounded cards.
+No stock 3D blobs.
+No gradient-everywhere.
+No giant text with no editorial purpose.
+No animation that makes text hard to read.
+No fake “award-winning agency” clichés.
+Design review gate: do not start detailed development until the team has approved the visual direction, typography pairing, color tokens, 105 mark idea, homepage composition and project card language.

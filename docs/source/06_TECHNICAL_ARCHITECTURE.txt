@@ -1,0 +1,68 @@
+STUDIO 105
+Studio 105 — Technical Architecture
+Production stack and engineering conventions
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+Recommended production stack: Next.js + React + TypeScript + Tailwind/CSS variables + GSAP + ScrollTrigger + Lenis + Three.js. Add other tools only when justified by a real requirement.
+1. Core stack
+Layer
+Choice
+Reason
+Framework
+Next.js
+Routing, metadata, static/SSR options, production ecosystem.
+UI
+React + TypeScript
+Composable components with type safety.
+Styling
+Tailwind + CSS custom properties
+Fast iteration plus token-driven design.
+Motion
+GSAP + ScrollTrigger + SplitText
+Reliable timeline and scroll system.
+Scrolling
+Lenis
+Smooth scroll with controlled synchronization.
+3D
+Three.js
+Direct WebGL control without requiring Blender.
+Deployment
+Vercel
+Natural fit for Next.js and preview deployments.
+2. Proposed folder architecture
+app/  (site)/    page.tsx    work/    services/    about/    notes/    contact/components/  ui/  layout/  sections/  motion/  webgl/lib/  motion/  webgl/  content/  utils/styles/  tokens.css  globals.csspublic/  fonts/  images/  models/  textures/docs/  source brief files copied here
+3. Rendering model
+Keep content and SEO-relevant text in server-renderable HTML.
+Hydrate heavy interactive sections on the client only when necessary.
+WebGL scenes should be isolated from normal content components.
+Avoid pushing the entire page into client components just because one section is interactive.
+4. State model
+Global: theme, nav state, reduced-motion, device class.
+Section-local: scroll progress, interaction intensity, active item.
+WebGL-local: pointer, camera, object transforms, renderer resources.
+Do not use a global state library unless complexity genuinely requires it.
+5. Motion architecture
+Create reusable motion utilities instead of hand-authoring every timeline. Example modules: useScrollReveal(), createTextReveal(), createMagnetic(), createPageTransition(), createScrubbedSection(). Every hook must clean up listeners, timelines and ScrollTriggers on unmount.
+6. WebGL architecture
+Use a clear scene owner. Example: HeroScene.tsx owns lifecycle; createHeroScene.ts creates the renderer/camera/scene; Hero105Object owns object construction; heroState stores interaction values; disposeHeroScene releases GPU resources. Never scatter renderer creation across random components.
+7. Performance budget
+Metric
+Target
+Initial page
+Fast contentful render; hero usable before non-critical scenes finish.
+WebGL
+Aim for stable 60 FPS desktop and acceptable 30–60 FPS mobile on mid-range devices.
+Images
+Modern compressed formats, correct dimensions, lazy loading below fold.
+JS
+Keep page-level client JS limited; split heavy interactive modules.
+Accessibility
+No major automated a11y issues; keyboard navigation complete.
+Layout stability
+No avoidable jump during font/image/3D initialization.
+8. Dependency policy
+Before adding a library, check whether a browser API, CSS feature or existing tool already solves it.
+Prefer official / maintained packages.
+Record why high-impact dependencies exist.
+Keep 3D, motion and content code separable so they can evolve independently.
+9. Deployment
+Keep main stable, use feature branches for experiments, run a local visual verification pass for every feature, use Vercel preview deployments before production, and keep environment variables out of source control.

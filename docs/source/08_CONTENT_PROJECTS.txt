@@ -1,0 +1,64 @@
+STUDIO 105
+Studio 105 — Content & Project System
+Services, copy rules and portfolio intake
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+The site needs proof, not filler. Content should make the studio credible while remaining honest about what has actually been built.
+1. Service taxonomy
+Service
+Positioning line
+Proof examples
+AI Agents
+Task-oriented agents that can actually execute useful work.
+Internal assistants, workflow agents, tool-using systems.
+Automations
+Connect the steps so repetitive work happens automatically.
+Notifications, document flows, data sync, operational automations.
+Web Development
+Websites and web apps that balance clarity, speed and craft.
+Marketing sites, dashboards, interactive experiences.
+App Development
+Cross-platform apps from prototype to production.
+Mobile product flows, APIs, release engineering.
+Ecommerce Solutions
+Commerce experiences engineered around discovery, checkout and growth.
+Storefronts, headless commerce, integrations.
+Content Management
+Publishing systems that give teams control without developer bottlenecks.
+CMS, editorial workflows, content tooling.
+2. Voice
+Confident but not arrogant.
+Technical without sounding like documentation.
+Specific instead of buzzword-heavy.
+Prefer verbs: design, build, connect, automate, ship, refine.
+Avoid empty claims such as “world-class”, “cutting-edge”, “revolutionary” unless proven.
+3. Founder story
+The Room 105 story should be concise: “Studio 105 started in a room shared by Umer and Saqlain. We began by making things together, then turned that habit into a studio.” The final wording can become more personal later, but the site should keep the origin grounded.
+4. GitHub usage rule
+GitHub profiles are not a portfolio database. Umer: https://github.com/SMPanther. Saqlain: https://github.com/sqln-ctrl. Cursor must not automatically import repositories into the site. Instead, maintain a manually curated projects.json or content file. Each selected project gets an explicit approval, title, role, summary, visuals, technology list and outcome.
+5. Project selection matrix
+Criterion
+Question
+Visual quality
+Does the project look good enough to show?
+Technical depth
+Does it demonstrate engineering ability?
+Fit
+Does it support Studio 105 services?
+Story
+Can we explain the problem, approach and result?
+Ownership
+Can we accurately claim the work and role?
+Assets
+Do we have screenshots/media rights?
+6. Case study content template
+Project title → one-line outcome → role → timeline → problem → insight → solution → design decisions → technical implementation → interaction/3D detail → results → reflection.
+7. Blog / Notes
+Use Notes for thinking, experiments and technical breakdowns.
+Potential categories: AI, creative development, experiments, process, web performance, 3D/web graphics.
+Posts should have an opinion or useful lesson; do not publish filler simply to make the blog look active.
+8. Content launch minimum
+A strong hero statement.
+3–5 selected projects or honest placeholders while real work is being prepared.
+Six service definitions.
+A concise About section.
+One direct contact path.

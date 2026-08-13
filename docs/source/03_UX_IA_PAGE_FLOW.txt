@@ -1,0 +1,99 @@
+STUDIO 105
+Studio 105 — UX, IA & Page Flow
+Information architecture and storytelling
+FRESH BUILD — NO LEGACY PORTFOLIO, UI, ASSETS OR CODE
+The experience should be cinematic but navigable. A first-time visitor must always understand where they are and what to do next.
+1. Primary information architecture
+Route
+Purpose
+Priority
+/
+Studio story, selected work, capabilities and conversion.
+P0
+/work
+Project archive, filtering and discovery.
+P0
+/work/[slug]
+Long-form case study.
+P0
+/services
+Service overview and deep links.
+P1
+/about
+People, philosophy and Room 105 origin.
+P1
+/notes
+Writing, experiments and studio thinking.
+P2
+/contact
+Project inquiry / call booking.
+P0
+2. Homepage flow
+1. Arrival — establish Studio 105 identity and signature 105 visual.
+2. Hero statement — say what the studio does in plain language.
+3. Interactive proof — 105 object or controlled visual interaction that demonstrates craft.
+4. Selected Work — show the strongest proof first, not every project.
+5. Services — introduce six service pillars without making the site feel like a brochure.
+6. Process — show how ideas turn into shipped work.
+7. About — explain the people and the room story.
+8. Experiments / Notes — show curiosity and range.
+9. Final CTA — give the visitor a simple next step.
+10. Footer — compact utility navigation + optional signature interaction.
+3. Hero content hierarchy
+Layer
+Question answered
+Eyebrow
+Who is this?
+Headline
+What do you do?
+Secondary line
+Why should I care?
+Visual interaction
+Can you actually craft digital experiences?
+CTA
+What can I do next?
+4. Services section logic
+The supplied reference contains six services: AI Agents, Automations, Web Development, App Development, Ecommerce Solutions and Content Management. Keep these names as the service taxonomy unless the founders later decide otherwise. Each card should answer three things: what we make, who it helps, and what outcome it creates.
+Service
+Interaction idea
+Proof cue
+AI Agents
+Cards expose a tiny “agent run” sequence.
+Tasks completed, not chat bubbles.
+Automations
+Visual chain collapses into one automated path.
+Before → after workflow.
+Web Development
+UI fragments assemble into a page/app.
+Performance / interaction detail.
+App Development
+Phone-like frames transition through a flow.
+Real app screens or prototype.
+Ecommerce Solutions
+Product → cart → checkout micro-flow.
+Conversion / store architecture.
+Content Management
+Editorial blocks reorder and publish.
+CMS workflow / publishing story.
+5. Work archive
+Do not build a generic 3x3 portfolio grid as the final concept.
+Use a controlled editorial field: a few large projects, mixed scale, intentional whitespace.
+A project card should reveal role, category, short result and year on interaction.
+Project detail should feel like a case study, not a gallery.
+6. Case study template
+1. Hero + one-line outcome.
+2. Context / problem.
+3. Approach / strategy.
+4. Design evolution.
+5. Build / technology.
+6. Interaction or technical showcase.
+7. Outcome / result.
+8. What we learned.
+9. Next project link.
+7. Conversion logic
+Every major section should naturally point to the next question. Hero → work. Work → capabilities. Capabilities → process. Process → about/trust. About → contact. Avoid repeated “Book a call” buttons every 100px.
+8. Navigation behavior
+Desktop nav remains available but visually quiet.
+On scroll down, reduce chrome slightly; on scroll up, restore it.
+Active route should be visible but not over-emphasized.
+Use page transitions only when they make the navigation feel spatially continuous.

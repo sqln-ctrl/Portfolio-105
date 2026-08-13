@@ -1,0 +1,61 @@
+:root {
+  /* Trionn-inspired — deep black, white type, amber energy + cool rim */
+  --color-ink: #050505;
+  --color-ink-soft: #0c0c0c;
+  --color-paper: #ffffff;
+  --color-paper-muted: rgba(255, 255, 255, 0.72);
+  --color-signal: #ff5c1a;
+  --color-signal-hover: #ff7a45;
+  --color-signal-cool: #c4784a;
+  --color-fog: #141414;
+  --color-fog-light: #1f1f1f;
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-line-strong: rgba(255, 255, 255, 0.22);
+  --color-text: var(--color-paper);
+  --color-text-muted: rgba(255, 255, 255, 0.58);
+  --color-text-subtle: rgba(255, 255, 255, 0.38);
+
+  --font-display: var(--font-syne), system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --font-editorial: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+
+  --text-xs: clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
+  --text-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.125rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+  --text-5xl: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+  --text-hero: clamp(3.5rem, 2.8rem + 5vw, 7.5rem);
+
+  --space-section: clamp(5rem, 4rem + 5vw, 9rem);
+  --space-block: clamp(2rem, 1.5rem + 2vw, 4rem);
+  --space-gutter: clamp(1.25rem, 1rem + 1vw, 2rem);
+  --space-grid-gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+
+  --max-width: 88rem;
+  --grid-columns: 12;
+  --nav-height: 4.5rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 560ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
