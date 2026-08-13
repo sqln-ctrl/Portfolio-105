@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { NavLinkMotion, ScrollHeader } from "@/components/motion/Interactions";
 import { Button } from "@/components/ui/Button";
+import { ensureAppInteractive, onLoaderComplete } from "@/lib/loader/loader-gate";
 import { cn } from "@/lib/utils/cn";
 
 const navLinks = [
@@ -21,6 +22,11 @@ export function SiteHeader() {
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    ensureAppInteractive();
+    return onLoaderComplete(() => ensureAppInteractive());
+  }, []);
+
+  useEffect(() => {
     if (!menuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -31,13 +37,18 @@ export function SiteHeader() {
     };
 
     document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setMenuOpen((open) => !open);
+  };
 
   return (
     <ScrollHeader>
@@ -81,11 +92,11 @@ export function SiteHeader() {
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line-strong md:hidden"
+            className="relative z-[2] inline-flex h-11 w-11 touch-manipulation items-center justify-center rounded-md border border-line-strong md:hidden"
             aria-expanded={menuOpen}
             aria-controls={menuId}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={toggleMenu}
           >
             <span className="sr-only">{menuOpen ? "Close" : "Menu"}</span>
             <span aria-hidden className="flex flex-col gap-1">
@@ -116,7 +127,7 @@ export function SiteHeader() {
         <div
           ref={menuRef}
           id={menuId}
-          className="border-t border-line bg-ink md:hidden"
+          className="relative z-[1] border-t border-line bg-ink md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"

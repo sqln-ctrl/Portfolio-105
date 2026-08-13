@@ -221,6 +221,15 @@ svg {
   height: 100% !important;
 }
 
+.hero-canvas--scroll {
+  touch-action: pan-y;
+  pointer-events: none;
+}
+
+.hero-visual-canvas--light {
+  pointer-events: none;
+}
+
 .hero-link-underline {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -1192,12 +1201,27 @@ body.custom-cursor-active * {
 /* Site loader — Trionn-style full blocking curtain */
 html.site-loader-pending {
   overflow: hidden;
+  height: 100%;
   background: var(--color-ink);
+  touch-action: none;
 }
 
-html.site-loader-pending #site-app {
+html.site-loader-pending body {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+
+html.site-loader-pending #site-app,
+body.site-loader-active #site-app {
   visibility: hidden;
+  opacity: 0;
   pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
 }
 
 html.site-loader-pending .skip-link {
@@ -1206,6 +1230,10 @@ html.site-loader-pending .skip-link {
 
 body.site-loader-active {
   overflow: hidden;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  touch-action: none;
 }
 
 /* Static shell — visible before React hydrates */
@@ -1221,6 +1249,11 @@ body.site-loader-active {
 
 html.site-loader-pending .site-loader-static {
   display: flex;
+}
+
+/* Hand off to React loader as soon as it exists in the DOM */
+html.site-loader-pending:has(.site-loader) .site-loader-static {
+  display: none;
 }
 
 body.site-loader-active .site-loader-static {
@@ -1256,21 +1289,95 @@ body.site-loader-active .site-loader-static {
   font-size: 1.75rem;
   color: color-mix(in srgb, var(--color-paper) 80%, var(--color-signal) 20%);
   background: var(--color-ink-soft);
+  animation: loader-mark-in 0.6s ease-out both;
+}
+
+.site-loader-static__track {
+  width: min(18rem, 70vw);
+  height: 1px;
+  background: var(--color-line);
+  overflow: hidden;
+}
+
+.site-loader-static__bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-signal),
+    color-mix(in srgb, var(--color-signal) 70%, var(--color-paper))
+  );
+  transform-origin: left center;
+  animation: loader-bar-fill 1.8s ease-out infinite;
+}
+
+.site-loader-static__status {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+@keyframes loader-mark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes loader-bar-fill {
+  0% { transform: scaleX(0.06); }
+  45% { transform: scaleX(0.55); }
+  100% { transform: scaleX(0.92); }
 }
 
 .site-loader {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 99999;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
-.site-loader.is-active {
+html.site-loader-pending .site-loader,
+body.site-loader-active .site-loader {
+  display: block;
   visibility: visible;
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
+}
+
+html.site-loader-done .site-loader {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+html.site-loader-done #site-app {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  position: static;
+  overflow: visible;
+}
+
+html.site-loader-done,
+html.site-loader-done body {
+  overflow: auto;
+  height: auto;
+  touch-action: auto;
+  position: static;
 }
 
 .site-loader__panel {
@@ -1363,8 +1470,14 @@ body.site-loader-active .site-loader-static {
     var(--color-signal),
     color-mix(in srgb, var(--color-signal) 70%, var(--color-paper))
   );
-  transform: scaleX(0);
+  transform: scaleX(0.06);
   transform-origin: left center;
+}
+
+/* CSS progress fallback until GSAP takes over (mobile / slow hydrate) */
+html.site-loader-pending .site-loader__bar,
+body.site-loader-active .site-loader__bar {
+  animation: loader-bar-fill 1.8s ease-out infinite;
 }
 
 .site-loader__count {
@@ -1374,12 +1487,30 @@ body.site-loader-active .site-loader-static {
   color: var(--color-signal);
 }
 
+.loader-debug-panel {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 100000;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-ink) 92%, transparent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: var(--color-signal);
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .site-loader,
   .site-loader-static { display: none; }
   html.site-loader-pending #site-app {
     visibility: visible;
-    pointer-events: auto;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -1669,6 +1800,82 @@ body.site-loader-active .site-loader-static {
 @media (prefers-reduced-motion: reduce) {
   .service-micro * {
     animation: none !important;
+  }
+}
+
+/* ─── Mobile & touch composition ─── */
+@media (max-width: 767px), (pointer: coarse) {
+  :root {
+    --space-section: clamp(3.25rem, 2.75rem + 3vw, 5rem);
+    --space-gutter: 1.125rem;
+  }
+
+  .hero-canvas-layer {
+    pointer-events: none;
+  }
+
+  .hero-headline-type {
+    font-size: clamp(2.65rem, 2rem + 5.5vw, 4.25rem);
+    line-height: 0.98;
+  }
+
+  .hero-eyebrow {
+    font-size: clamp(0.9rem, 0.82rem + 0.35vw, 1rem);
+  }
+
+  .hero-cta-row .hero-cta-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.75rem;
+  }
+
+  .hero-frame-lines {
+    opacity: 0.45;
+  }
+
+  .display-heading.text-4xl,
+  .display-heading.text-3xl {
+    font-size: clamp(1.85rem, 1.5rem + 2.5vw, 2.35rem);
+  }
+
+  .work-card--featured .work-card-meta {
+    padding: 1.25rem;
+  }
+
+  .work-card-cta,
+  .service-caps {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-room-visual {
+    transform: none;
+    box-shadow: 12px 12px 0 color-mix(in srgb, var(--color-signal) 8%, transparent);
+  }
+
+  .founder-card,
+  .service-card,
+  .what-we-build-item {
+    padding: 1.15rem;
+  }
+
+  .site-footer .display-heading {
+    font-size: clamp(1.75rem, 1.5rem + 2vw, 2.25rem);
+  }
+
+  .container-site {
+    width: min(100% - 1.25rem * 2, var(--max-width));
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-content-layer {
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .hero-stage {
+    min-height: 100svh;
   }
 }
 

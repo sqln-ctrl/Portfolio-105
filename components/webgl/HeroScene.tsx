@@ -1,14 +1,14 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { HeroSceneFallback } from "@/components/webgl/HeroSceneFallback";
+import { HeroSceneBootFallback } from "@/components/webgl/HeroSceneBootFallback";
 
 const HeroSceneCanvas = dynamic(
   () =>
     import("@/components/webgl/HeroSceneCanvas").then((mod) => mod.HeroSceneCanvas),
   {
     ssr: false,
-    loading: () => <HeroSceneFallback />,
+    loading: () => <HeroSceneBootFallback />,
   },
 );
 

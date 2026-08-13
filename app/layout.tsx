@@ -4,9 +4,10 @@ import { DM_Sans, Instrument_Serif, JetBrains_Mono, Syne } from "next/font/googl
 import { CustomCursor } from "@/components/motion/CustomCursor";
 import { LenisProvider } from "@/components/motion/LenisProvider";
 import { SiteLoader } from "@/components/motion/SiteLoader";
+import { LoaderDebugPanel } from "@/components/motion/LoaderDebugPanel";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { LOADER_BLOCK_SCRIPT } from "@/lib/loader/loader-gate";
+import { LOADER_BLOCK_SCRIPT, LOADER_CRITICAL_CSS } from "@/lib/loader/loader-gate";
 import { siteConfig } from "@/lib/seo/metadata";
 import "@/styles/globals.css";
 
@@ -77,6 +78,7 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <style id="studio105-loader-critical" dangerouslySetInnerHTML={{ __html: LOADER_CRITICAL_CSS }} />
         <Script id="studio105-loader-block" strategy="beforeInteractive">
           {LOADER_BLOCK_SCRIPT}
         </Script>
@@ -86,10 +88,15 @@ export default function RootLayout({
           <div className="site-loader-static__inner">
             <p className="site-loader-static__brand">Studio 105</p>
             <span className="site-loader-static__mark">105</span>
+            <div className="site-loader-static__track" aria-hidden>
+              <div className="site-loader-static__bar" />
+            </div>
+            <span className="site-loader-static__status">Initializing</span>
           </div>
         </div>
 
         <SiteLoader />
+        <LoaderDebugPanel />
 
         <a href="#main-content" className="skip-link">
           Skip to main content

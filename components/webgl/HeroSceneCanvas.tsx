@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, registerGsapPlugins } from "@/lib/motion/register-gsap";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
+import { getDeviceProfile } from "@/lib/motion/device-profile";
 import { HeroSceneFallback } from "@/components/webgl/HeroSceneFallback";
 import { createHeroState } from "@/lib/webgl/hero-state";
 import { updateHeroBridge } from "@/lib/webgl/hero-bridge";
@@ -42,8 +43,12 @@ export function HeroSceneCanvas({ className }: HeroSceneCanvasProps) {
   const visibleRef = useRef(true);
   const heroReadyRef = useRef(false);
   const [useFallback, setUseFallback] = useState(false);
+  const [isLightMotion, setIsLightMotion] = useState(false);
 
   useEffect(() => {
+    const profile = getDeviceProfile();
+    setIsLightMotion(profile.lightMotion);
+
     if (prefersReducedMotion()) {
       markLoaderHeroReady();
       setUseFallback(true);
@@ -68,8 +73,11 @@ export function HeroSceneCanvas({ className }: HeroSceneCanvasProps) {
     let assemblyTween: gsap.core.Tween | null = null;
 
     try {
-      ctx = createHeroScene({ canvas, state });
+      ctx = createHeroScene({ canvas, state, quality: profile.heroQuality });
       ctxRef.current = ctx;
+      ctx.resize();
+      renderHeroFrame(ctx);
+      markLoaderHeroReady();
     } catch {
       markLoaderHeroReady();
       setUseFallback(true);
@@ -125,7 +133,7 @@ export function HeroSceneCanvas({ className }: HeroSceneCanvasProps) {
         visibleRef.current = entry.isIntersecting;
         state.isActive = entry.isIntersecting;
       },
-      { threshold: 0.05 },
+      { threshold: 0.01, rootMargin: "50px" },
     );
     observer.observe(container);
 
@@ -152,11 +160,12 @@ export function HeroSceneCanvas({ className }: HeroSceneCanvasProps) {
     };
 
     const onPointerMove = (event: PointerEvent) => {
-      if (isLoaderComplete()) updatePointer(event.clientX, event.clientY);
+      if (profile.lightMotion || !isLoaderComplete()) return;
+      updatePointer(event.clientX, event.clientY);
     };
 
     const onPointerDown = (event: PointerEvent) => {
-      if (!isLoaderComplete()) return;
+      if (profile.lightMotion || !isLoaderComplete()) return;
       state.isPointerDown = true;
       container.setPointerCapture(event.pointerId);
       updatePointer(event.clientX, event.clientY);
@@ -179,10 +188,11 @@ export function HeroSceneCanvas({ className }: HeroSceneCanvasProps) {
     const loop = () => {
       rafRef.current = requestAnimationFrame(loop);
       if (!ctxRef.current) return;
-      if (visibleRef.current) {
+      const shouldRender = visibleRef.current || !isLoaderComplete();
+      if (shouldRender) {
         renderHeroFrame(ctxRef.current);
         frameCount += 1;
-        if (!heroReadyRef.current && frameCount >= 2) {
+        if (!heroReadyRef.current && frameCount >= 1) {
           heroReadyRef.current = true;
           markLoaderHeroReady();
         }
@@ -224,10 +234,17 @@ export function HeroSceneCanvas({ className }: HeroSceneCanvasProps) {
   return (
     <div
       ref={containerRef}
-      className={`hero-visual-canvas ${className ?? ""}`}
-      aria-label="Interactive 105 object — hold to disassemble, move to tilt"
+      className={`hero-visual-canvas ${isLightMotion ? "hero-visual-canvas--light" : ""} ${className ?? ""}`}
+      aria-label={
+        isLightMotion
+          ? "Studio 105 signature object"
+          : "Interactive 105 object — hold to disassemble, move to tilt"
+      }
     >
-      <canvas ref={canvasRef} className="h-full w-full touch-none" />
+      <canvas
+        ref={canvasRef}
+        className={`h-full w-full ${isLightMotion ? "hero-canvas--scroll" : "touch-none"}`}
+      />
     </div>
   );
 }

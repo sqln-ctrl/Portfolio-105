@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { gsap, registerGsapPlugins, ScrollTrigger } from "@/lib/motion/register-gsap";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
+import { shouldUseLightMotion } from "@/lib/motion/device-profile";
 import { isLoaderComplete, onLoaderComplete } from "@/lib/loader/loader-gate";
 
 type LenisProviderProps = {
@@ -16,7 +17,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
   useEffect(() => {
     registerGsapPlugins();
 
-    if (prefersReducedMotion()) {
+    if (prefersReducedMotion() || shouldUseLightMotion()) {
       ScrollTrigger.refresh();
       return;
     }

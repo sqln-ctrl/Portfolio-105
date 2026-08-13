@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap, registerGsapPlugins } from "@/lib/motion/register-gsap";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
+import { shouldUseLightMotion } from "@/lib/motion/device-profile";
 import {
   getHeroBridgeSnapshot,
   subscribeHeroBridge,
@@ -29,7 +30,7 @@ export function ScrollParticleBridge() {
   const explodeRef = useRef(0);
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || shouldUseLightMotion()) return;
 
     registerGsapPlugins();
     const canvas = canvasRef.current;

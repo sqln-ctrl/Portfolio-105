@@ -84,17 +84,14 @@ export function HeroSection() {
         <HeroScene />
       </div>
 
-      <div className="hero-content-layer container-site relative z-10 flex min-h-[100dvh] flex-col justify-between py-[calc(var(--nav-height)+1.5rem)] pb-8">
-        <div data-hero-content className="hero-copy max-w-3xl pt-4">
-          <p className="hero-eyebrow mb-6">{hero.eyebrow}</p>
+      <div className="hero-content-layer container-site relative z-10 flex min-h-[100dvh] flex-col justify-between py-[calc(var(--nav-height)+1rem)] pb-6 md:py-[calc(var(--nav-height)+1.5rem)] md:pb-8">
+        <div data-hero-content className="hero-copy max-w-3xl pt-2 md:pt-4">
+          <p className="hero-eyebrow mb-4 md:mb-6">{hero.eyebrow}</p>
           <h1 id="hero-heading" className="hero-headline-type max-w-4xl">
-            <LineReveal
-              delay={0.15}
-              lines={["Built to mean", "something."]}
-            />
+            <LineReveal delay={0.15} lines={["Built to mean", "something."]} />
           </h1>
-          <p className="mt-8 max-w-lg body-lg">{hero.secondary}</p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <p className="mt-6 max-w-lg body-lg md:mt-8">{hero.secondary}</p>
+          <div className="hero-cta-row mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center md:mt-10 md:gap-4">
             <Link
               href="/contact"
               className="hero-cta-btn"
@@ -114,14 +111,15 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-copy flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="hero-copy flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
           <p
             data-hero-hint
             className="max-w-xs font-mono text-xs uppercase leading-relaxed tracking-widest text-text-subtle"
           >
-            Hold to disassemble · move to tilt
+            <span className="hidden md:inline">Hold to disassemble · move to tilt</span>
+            <span className="md:hidden">Studio 105 · design, build, ship</span>
           </p>
-          <div className="font-mono text-xs uppercase leading-relaxed tracking-widest text-text-subtle">
+          <div className="hidden font-mono text-xs uppercase leading-relaxed tracking-widest text-text-subtle md:block">
             <p className="text-paper-muted">Est. Room 105</p>
             <p>Design · Build · Ship</p>
           </div>

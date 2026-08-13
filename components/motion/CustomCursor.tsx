@@ -1,15 +1,24 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isTouchDevice, prefersReducedMotion } from "@/lib/motion/reduced-motion";
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion() || isTouchDevice()) return;
+    const enabled = !prefersReducedMotion() && !isTouchDevice();
+    setEnabled(enabled);
+    if (!enabled) {
+      document.body.classList.remove("custom-cursor-active");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
 
     document.body.classList.add("custom-cursor-active");
 
@@ -48,9 +57,9 @@ export function CustomCursor() {
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [enabled]);
 
-  if (prefersReducedMotion() || isTouchDevice()) return null;
+  if (!enabled) return null;
 
   return (
     <div className="custom-cursor" aria-hidden>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { gsap, registerGsapPlugins } from "@/lib/motion/register-gsap";
 import { DURATION, EASE } from "@/lib/motion/easing";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
+import { shouldUseLightMotion } from "@/lib/motion/device-profile";
 import { cn } from "@/lib/utils/cn";
 
 type NavLinkMotionProps = {
@@ -68,7 +69,7 @@ export function ScrollHeader({ children }: ScrollHeaderProps) {
 
   useEffect(() => {
     const header = ref.current;
-    if (!header || prefersReducedMotion()) return;
+    if (!header || prefersReducedMotion() || shouldUseLightMotion()) return;
 
     const onScroll = () => {
       const current = window.scrollY;
@@ -92,7 +93,7 @@ export function ScrollHeader({ children }: ScrollHeaderProps) {
   return (
     <header
       ref={ref}
-      className="sticky top-0 z-50 border-b border-line bg-ink/90 backdrop-blur-md will-change-transform"
+      className="sticky top-0 z-[100] isolate border-b border-line bg-ink/90 backdrop-blur-md will-change-transform"
     >
       {children}
     </header>

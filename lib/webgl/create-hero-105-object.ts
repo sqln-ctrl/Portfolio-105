@@ -168,7 +168,14 @@ function createParticleField(count: number, spread: number, color: number, size:
   return { points: new THREE.Points(geo, mat), velocities, origins };
 }
 
-export function createHero105Object(): Hero105Object {
+export type Hero105Quality = "full" | "mobile";
+
+export function createHero105Object(quality: Hero105Quality = "full"): Hero105Object {
+  const isMobile = quality === "mobile";
+  const largeCount = isMobile ? 1 : 3;
+  const mediumCount = isMobile ? 6 : 16;
+  const atmosphereCount = isMobile ? 48 : 140;
+  const dustCount = isMobile ? 20 : 60;
   const root = new THREE.Group();
   const digits: DigitSlot[] = [];
   const shardSlots: ShardSlot[] = [];
@@ -198,7 +205,7 @@ export function createHero105Object(): Hero105Object {
     });
   });
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < largeCount; i++) {
     const pos = new THREE.Vector3(
       0.8 + Math.random() * 2.5,
       (Math.random() - 0.5) * 2.2,
@@ -216,7 +223,7 @@ export function createHero105Object(): Hero105Object {
     });
   }
 
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < mediumCount; i++) {
     const pos = new THREE.Vector3(
       (Math.random() - 0.2) * 3.8,
       (Math.random() - 0.5) * 2.8,
@@ -238,8 +245,8 @@ export function createHero105Object(): Hero105Object {
     });
   }
 
-  const atmosphereField = createParticleField(140, 4.5, COPPER, 0.014);
-  const dustField = createParticleField(60, 3.2, IVORY, 0.01);
+  const atmosphereField = createParticleField(atmosphereCount, isMobile ? 3.6 : 4.5, COPPER, isMobile ? 0.012 : 0.014);
+  const dustField = createParticleField(dustCount, isMobile ? 2.6 : 3.2, IVORY, 0.01);
   root.add(atmosphereField.points);
   root.add(dustField.points);
 

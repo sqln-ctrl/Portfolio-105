@@ -2,7 +2,9 @@ import * as THREE from "three";
 import {
   createHero105Object,
   type Hero105Object,
+  type Hero105Quality,
 } from "@/lib/webgl/create-hero-105-object";
+import { getHeroPixelRatio } from "@/lib/motion/device-profile";
 import type { Hero105State } from "@/lib/webgl/hero-state";
 
 export type HeroSceneContext = {
@@ -19,13 +21,15 @@ export type HeroSceneContext = {
 type CreateHeroSceneOptions = {
   canvas: HTMLCanvasElement;
   state: Hero105State;
+  quality?: Hero105Quality;
   dpr?: number;
 };
 
 export function createHeroScene({
   canvas,
   state,
-  dpr = Math.min(window.devicePixelRatio, 2),
+  quality = "full",
+  dpr = getHeroPixelRatio(quality),
 }: CreateHeroSceneOptions): HeroSceneContext {
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x050505, 0.08);
@@ -36,8 +40,8 @@ export function createHeroScene({
   const renderer = new THREE.WebGLRenderer({
     canvas,
     alpha: true,
-    antialias: true,
-    powerPreference: "high-performance",
+    antialias: quality === "full",
+    powerPreference: quality === "mobile" ? "default" : "high-performance",
   });
   renderer.setPixelRatio(dpr);
   renderer.setClearColor(0x000000, 0);
@@ -45,7 +49,12 @@ export function createHeroScene({
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.08;
 
-  const object = createHero105Object();
+  const object = createHero105Object(quality);
+
+  if (quality === "mobile") {
+    camera.position.z = 5.4;
+    object.root.scale.setScalar(0.88);
+  }
   scene.add(object.root);
 
   scene.add(new THREE.AmbientLight(0xfff5ee, 0.18));
