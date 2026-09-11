@@ -1,10 +1,19 @@
-# Studio 105 Agent Rules
+# Loopcodez Agent Rules
 
 ## Project identity
-Studio 105 is a new agency founded by Umer and Saqlain, roommates whose origin story is Room 105.
+Loopcodez is an independent design and development studio founded by Umer and Saqlain. The current identity is Open Loop: an infinity mark, charcoal and ivory, electric lime, transparent crystals, and purposeful motion. Public branding must use Loopcodez.
 
 ## Non-negotiable reset
-This project starts from zero. Never reuse the previous portfolio's theme, layout, components, icons, graphics, 3D assets, frontend architecture, or visual language.
+The current redesign is original. Never import or revive the previous portfolio's theme, layout, components, icons, graphics, 3D assets, frontend architecture, or visual language.
+
+## Current source of truth
+Read README.md, design.md, deployment.md, docs/architecture.md, docs/motion.md, docs/content.md, and docs/qa.md before relevant changes. The old docs/source text pack and uppercase historical decision documents are archival; their old identity and visual instructions are superseded.
+
+## Database boundary
+The user explicitly manages Supabase setup manually. Put SQL, migrations, seeds, role bootstrap, and verification queries in supabase/. Do not create a hosted project or execute database queries unless the user changes this instruction. Website code and local checks remain in scope.
+
+## Studio permissions
+The database owner role is labelled Super admin; editor is labelled Admin. Admins can manage content and enquiries but cannot add admins or change membership. Team-access APIs must verify the owner role on every request, independently of the UI. Do not add a production preview/authentication bypass.
 
 ## Reference rules
 - The Trionn site is an implementation-quality reference, not a visual template to copy.
@@ -48,3 +57,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+

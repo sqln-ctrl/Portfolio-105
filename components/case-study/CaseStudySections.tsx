@@ -32,13 +32,11 @@ type CaseStudyHeroProps = {
 };
 
 export function CaseStudyHero({ project }: CaseStudyHeroProps) {
-  const indexLabel = String(project.displayIndex).padStart(2, "0");
+
 
   return (
     <header className="case-study-hero mb-12 border-b border-line pb-12">
-      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-subtle">
-        Project {indexLabel}
-      </p>
+
       <div className="mt-4 mb-6 flex flex-wrap items-center gap-2">
         {project.typeTags.map((tag) => (
           <span key={tag} className="work-type-tag">
@@ -75,6 +73,7 @@ export function CaseStudyHero({ project }: CaseStudyHeroProps) {
         slug={project.slug}
         title={project.title}
         liveUrl={project.liveUrl}
+        coverUrl={project.coverUrl}
         approved={project.approved}
         typeTags={project.typeTags}
         className="mt-10 aspect-[16/9]"
@@ -101,10 +100,10 @@ type CaseStudyBlockProps = {
   children: React.ReactNode;
 };
 
-export function CaseStudyBlock({ index, title, children }: CaseStudyBlockProps) {
+export function CaseStudyBlock({ title, children }: CaseStudyBlockProps) {
   return (
     <section className="case-study-block border-b border-line py-10 last:border-b-0">
-      <p className="section-marker mb-3">{index}</p>
+
       <h2 className="display-heading mb-6 text-2xl text-paper">{title}</h2>
       <div className="max-w-2xl space-y-4 text-text-muted leading-relaxed">
         {children}
@@ -173,3 +172,4 @@ export function CaseStudyNextNav({ prev, next }: CaseStudyNextNavProps) {
     </nav>
   );
 }
+

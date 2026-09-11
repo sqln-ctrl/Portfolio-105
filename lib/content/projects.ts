@@ -1,6 +1,8 @@
 export type ProjectStatus = "draft" | "live";
 
 export type CaseStudy = {
+  coverUrl?: string;
+  sections?: { id: string; title: string; body: string; layout: "text" | "split" | "quote" }[];
   slug: string;
   title: string;
   category: string;
@@ -222,6 +224,122 @@ export const projects: CaseStudy[] = [
     reflection:
       "Treating the agent as a task runner — not a conversational partner — changed how the team trusted it. Transparency beat personality.",
   },
+  {
+  slug: "horizon-boys-hostel",
+  title: "Horizon Boys Hostel — Modern Hostel Website",
+  category: "Web Development",
+  serviceSlug: "web-development",
+  role: "Design & Front-end Engineering",
+  timeline: "Shipped",
+  year: "2026",
+  featured: true,
+  displayIndex: 3,
+  typeTags: ["WEB", "HOSPITALITY"],
+  status: "live",
+  approved: true,
+ 
+  liveUrl: "https://horizon-hostel.vercel.app/",
+
+  outcome:
+    "A modern, responsive hostel website designed to showcase rooms, facilities, meal plans, and hostel information while turning visitor interest into direct WhatsApp inquiries and bookings.",
+
+  problem:
+    "Horizon Boys Hostel needed a professional online presence that could clearly communicate its rooms, facilities, meal options, location, and contact information while making it easy for prospective residents to inquire or book.",
+
+  insight:
+    "For a local hostel, the website needs to do more than display information. Prospective residents want to quickly understand the accommodation, see the facilities, check available options, and contact the hostel directly. WhatsApp provided the most natural conversion path for this audience.",
+
+  approach: [
+    "Structured the website around the key questions prospective residents have: rooms, facilities, meals, location, gallery, and booking.",
+    "Built reusable content-driven sections so hostel information such as rooms, facilities, meal plans, gallery images, and contact details can be updated easily.",
+    "Integrated WhatsApp throughout the experience, allowing visitors to ask about rooms, prices, meal plans, bookings, and general inquiries with pre-filled messages.",
+    "Added booking and quick-message forms with validation to make inquiries more structured while maintaining WhatsApp as the primary communication channel.",
+  ],
+
+  designDecisions: [
+    "Used a clean, modern visual system designed to make the hostel feel trustworthy, comfortable, and professionally managed.",
+    "Prioritized room and facility imagery so visitors can understand the accommodation before making an inquiry.",
+    "Kept navigation and conversion paths simple, with prominent booking and WhatsApp actions throughout the site.",
+    "Designed the experience responsively so prospective residents can browse rooms and contact the hostel easily from mobile devices.",
+  ],
+
+  technologies: [
+    "React",
+    "Vite",
+    "Tailwind CSS",
+    "Framer Motion",
+    "React Hook Form",
+    "WhatsApp Integration",
+    "Responsive UI",
+  ],
+
+  interactionDetail:
+    "Scroll-based animations, responsive navigation, interactive room and facility sections, keyboard-accessible gallery lightbox, validated inquiry forms, and direct WhatsApp handoff with pre-filled messages.",
+
+  results: [
+    "Delivered a complete responsive marketing website for Horizon Boys Hostel.",
+    "Created dedicated experiences for rooms, facilities, meal plans, gallery, booking, and contact.",
+    "Integrated WhatsApp across booking, room inquiries, meal-plan inquiries, and general contact.",
+    "Built the site as a static React application that can be deployed without a server-side backend.",
+    "Made core hostel content configurable through centralized data files for easier future updates.",
+  ],
+
+  reflection:
+    "A hostel website should reduce uncertainty before asking someone to make contact. By combining clear accommodation information, visual presentation, accessible content, and direct WhatsApp communication, the website creates a simple path from discovery to inquiry."
+},
+  {
+  slug: "leadforge-ai-lead-generation-platform",
+  title: "LeadForge — AI-Powered Lead Generation Platform",
+  category: "SaaS & Automation", // adjust to match your existing category taxonomy
+  serviceSlug: "automations",
+  role: "Full-Stack Engineering & Product Design",
+  timeline: "In development",
+  year: "2026",
+  featured: true,
+  displayIndex: 1, // adjust based on where it sits among your other case studies
+  typeTags: ["WEB", "SAAS", "AI"],
+  status: "draft", // No public deployment has been supplied.
+  approved: true,
+  
+  liveUrl: "",
+  // liveUrl intentionally omitted -- no public deployment yet
+  outcome:
+    "A working lead-generation pipeline for agencies: real business discovery, a qualification system based on actual contact data, and AI-generated website audits and outreach drafts.",
+  problem:
+    "Agencies doing outbound prospecting waste hours manually scrolling maps and social media, guessing which local businesses have outdated sites or no online presence at all, then chasing down contact info by hand.",
+  insight:
+    "The bottleneck isn't finding businesses — it's knowing which ones are actually worth pitching. A lead is only useful if there's a real way to reach them, and outreach lands better when it references something true about their actual site, not a generic pitch.",
+  approach: [
+    "Built a discovery engine on OpenStreetMap/Geoapify so any city + category search returns real, addressable businesses — no manual sourcing.",
+    "Designed qualification around actual reachability: a lead only counts as qualified once it has a phone, email, or website on file, not a manually-flipped status flag.",
+    "Added an AI audit step that performs a live check on a business's website (reachable? HTTPS? page title?) and has Gemini summarize the real opportunity from that signal.",
+    "Chained the audit into AI-drafted outreach — a personalized first-touch email generated from the actual audit findings, not a template.",
+  ],
+  designDecisions: [
+    "Custom design system (ink neutrals + an ember/forge accent) rather than default component-library styling, tying the visual identity to the product name.",
+    "Lead scores render on a cold-to-hot heat scale instead of a plain number, reinforcing the 'forge' metaphor at the UI level.",
+    "Space Grotesk for display type, Inter for body, IBM Plex Mono for data — a deliberate type pairing rather than a single default font.",
+  ],
+  technologies: [
+    "React",
+    "Tailwind CSS",
+    "FastAPI",
+    "PostgreSQL (Supabase)",
+    "SQLAlchemy + Alembic",
+    "OpenStreetMap / Geoapify",
+    "Google Gemini API",
+    "JWT Auth + RBAC",
+  ],
+  interactionDetail:
+    "Run a discovery search, click straight into any result for full lead detail, update pipeline status, log notes, and trigger AI audit/proposal generation — all from one flow, no page-to-page context loss.",
+  results: [
+    "End-to-end pipeline working: discover → qualify (by real contact data) → AI audit → AI-drafted outreach.",
+    "Auth, RBAC, and a persisted Postgres schema running on Supabase.",
+    "Zero paid/card-gated dependencies in the discovery layer — built specifically around free, no-card APIs.",
+  ],
+  reflection:
+    "The most useful lesson wasn't the AI integration — it was that 'qualified' needed a strict, data-backed definition (has contact info) instead of a manually-set flag, or the whole pipeline would fill up with leads nobody could actually reach.",
+}
 ];
 
 export function getFeaturedProjects(): CaseStudy[] {
@@ -271,3 +389,4 @@ export function filterProjectsByCategory(category: string | null): CaseStudy[] {
   if (!category) return projects;
   return projects.filter((p) => p.category === category);
 }
+

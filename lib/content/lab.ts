@@ -9,13 +9,13 @@ export type LabExperiment = {
 
 export const labExperiments: LabExperiment[] = [
   {
-    id: "procedural-105",
+    id: "open-loop",
     index: "001",
-    title: "Procedural 105",
+    title: "Open Loop",
     category: "WebGL",
     status: "live",
     description:
-      "Hero object — digits with depth, copper orbit, and tiered fragment field.",
+      "A glass infinity mark that separates into floating pieces as you scroll the homepage.",
   },
   {
     id: "webgl-typography",
@@ -23,7 +23,7 @@ export const labExperiments: LabExperiment[] = [
     title: "WebGL Typography",
     category: "Creative coding",
     status: "wip",
-    description: "Canvas-rendered serif digits with ceramic material response.",
+    description: "Exploring expressive type and material response in three dimensions.",
   },
   {
     id: "ai-agent-runner",
@@ -39,14 +39,14 @@ export const labExperiments: LabExperiment[] = [
     title: "Interactive 3D Scene",
     category: "3D",
     status: "concept",
-    description: "Hold-to-disassemble object interaction for portfolio moments.",
+    description: "Exploring pointer-led interaction with procedural objects.",
   },
   {
     id: "scroll-bridge",
     index: "005",
-    title: "Scroll Particle Bridge",
+    title: "Crystal Field",
     category: "Motion",
     status: "live",
-    description: "Dissolve particles that travel from hero into page sections.",
+    description: "Transparent crystals and a subtle particle field surrounding the homepage loop.",
   },
 ];

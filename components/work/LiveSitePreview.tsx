@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useHydrated } from "@/lib/motion/use-hydrated";
 import { LivePreviewShell } from "@/components/work/LivePreviewShell";
 
 type LiveSitePreviewProps = {
@@ -28,15 +29,13 @@ export function LiveSitePreview({
   ...rest
 }: LiveSitePreviewProps) {
   const showCardImage = Boolean(rest["data-card-image"]);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useHydrated();
   const frameRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.35);
 
   const displayHost = getDisplayHost(url, hostname);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+
 
   useEffect(() => {
     if (!mounted) return;
@@ -83,6 +82,8 @@ export function LiveSitePreview({
           title={`${title} — live preview`}
           loading="lazy"
           tabIndex={-1}
+          aria-hidden="true"
+          referrerPolicy="no-referrer"
           sandbox="allow-scripts allow-same-origin allow-forms"
           style={{
             transform: `scale(${scale})`,
@@ -104,3 +105,4 @@ export function LiveSitePreview({
     </div>
   );
 }
+

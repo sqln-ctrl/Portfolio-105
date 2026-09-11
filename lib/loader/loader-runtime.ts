@@ -40,7 +40,7 @@ export function startLoaderRuntime(callbacks: LoaderRuntimeCallbacks): RuntimeHa
   let exitStarted = false;
   let finishCalled = false;
   let pollId = 0;
-  let minTimerId = 0;
+  const minTimerId = 0;
   let forceExitId = 0;
   let exitFinishId = 0;
   let fontsTimerId = 0;
@@ -164,7 +164,7 @@ export function startLoaderRuntime(callbacks: LoaderRuntimeCallbacks): RuntimeHa
     exit();
   };
 
-  window.addEventListener("studio105:loader-force-exit", onFallback);
+  window.addEventListener("loopcodez:loader-force-exit", onFallback);
 
   return {
     dispose: () => {
@@ -175,7 +175,9 @@ export function startLoaderRuntime(callbacks: LoaderRuntimeCallbacks): RuntimeHa
       window.clearTimeout(forceExitId);
       window.clearTimeout(exitFinishId);
       window.clearTimeout(fontsTimerId);
-      window.removeEventListener("studio105:loader-force-exit", onFallback);
+      window.removeEventListener("loopcodez:loader-force-exit", onFallback);
     },
   };
 }
+
+

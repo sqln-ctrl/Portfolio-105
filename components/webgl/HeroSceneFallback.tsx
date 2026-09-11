@@ -16,9 +16,11 @@ export function HeroSceneFallback({ className }: HeroSceneFallbackProps) {
     <div
       className={`hero-visual-fallback ${className ?? ""}`}
       role="img"
-      aria-label="Studio 105 mark — static fallback when WebGL or motion is reduced"
+      aria-label="Loopcodez mark — static fallback when WebGL or motion is reduced"
     >
-      <span className="mark-105-static">105</span>
+      <span className="mark-105-static">∞</span>
     </div>
   );
 }
+
+

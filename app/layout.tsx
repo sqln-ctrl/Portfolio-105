@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { DM_Sans, Instrument_Serif, JetBrains_Mono, Syne } from "next/font/google";
-import { CustomCursor } from "@/components/motion/CustomCursor";
-import { LenisProvider } from "@/components/motion/LenisProvider";
-import { SiteLoader } from "@/components/motion/SiteLoader";
-import { LoaderDebugPanel } from "@/components/motion/LoaderDebugPanel";
+import { SiteShell } from "@/components/loopcodez/SiteShell";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { LOADER_BLOCK_SCRIPT, LOADER_CRITICAL_CSS } from "@/lib/loader/loader-gate";
+
 import { siteConfig } from "@/lib/seo/metadata";
 import "@/styles/globals.css";
+import "@/styles/loopcodez.css";
+import "@/styles/inner-pages.css";
+import "@/styles/admin.css";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -40,7 +38,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: "%s · Studio 105",
+    template: "%s · Loopcodez",
   },
   description: siteConfig.description,
   icons: {
@@ -74,43 +72,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${instrumentSerif.variable} ${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
-      <head>
-        <style id="studio105-loader-critical" dangerouslySetInnerHTML={{ __html: LOADER_CRITICAL_CSS }} />
-        <Script id="studio105-loader-block" strategy="beforeInteractive">
-          {LOADER_BLOCK_SCRIPT}
-        </Script>
-      </head>
       <body className="min-h-dvh antialiased" suppressHydrationWarning>
-        <div id="site-loader-static" className="site-loader-static" aria-hidden="true">
-          <div className="site-loader-static__inner">
-            <p className="site-loader-static__brand">Studio 105</p>
-            <span className="site-loader-static__mark">105</span>
-            <div className="site-loader-static__track" aria-hidden>
-              <div className="site-loader-static__bar" />
-            </div>
-            <span className="site-loader-static__status">Initializing</span>
-          </div>
-        </div>
-
-        <SiteLoader />
-        <LoaderDebugPanel />
 
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
 
-        <LenisProvider>
-          <div id="site-app">
-            <CustomCursor />
-            <SiteHeader />
-            <main id="main-content">{children}</main>
-            <SiteFooter />
-          </div>
-        </LenisProvider>
+        <SiteShell footer={<SiteFooter />}>{children}</SiteShell>
       </body>
     </html>
   );
 }
+
+

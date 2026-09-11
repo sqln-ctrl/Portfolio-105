@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import {
   getLoaderSnapshot,
   onLoaderDebug,
@@ -9,13 +9,14 @@ import {
 } from "@/lib/loader/loader-gate";
 import { formatLoaderDebugLines, isLoaderDebugEnabled } from "@/lib/loader/loader-debug";
 
+const subscribeDebug = () => () => {};
 export function LoaderDebugPanel() {
-  const [enabled, setEnabled] = useState(false);
+  const enabled = useSyncExternalStore(subscribeDebug, isLoaderDebugEnabled, () => false);
   const [snapshot, setSnapshot] = useState<LoaderGateSnapshot>(() => getLoaderSnapshot());
 
   useEffect(() => {
     const active = isLoaderDebugEnabled();
-    setEnabled(active);
+
     setLoaderDebugEnabled(active);
     if (!active) return;
     return onLoaderDebug(setSnapshot);
@@ -31,3 +32,4 @@ export function LoaderDebugPanel() {
     </div>
   );
 }
+

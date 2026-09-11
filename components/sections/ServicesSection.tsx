@@ -20,6 +20,23 @@ export function ServicesSection() {
 
     const cards = section.querySelectorAll("[data-service-card]");
 
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.65,
+        stagger: 0.08,
+        ease: EASE.out,
+        scrollTrigger: {
+          trigger: section.querySelector("[data-service-grid]"),
+          start: "top 82%",
+          toggleActions: "play none none reverse",
+        },
+      },
+    );
+
     cards.forEach((card) => {
       const caps = card.querySelector("[data-service-caps]");
       const visual = card.querySelector("[data-service-visual]");
@@ -66,7 +83,7 @@ export function ServicesSection() {
           </p>
         </Reveal>
 
-        <Reveal stagger={0.07} className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div data-service-grid className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => (
             <article
               key={service.slug}
@@ -104,7 +121,7 @@ export function ServicesSection() {
               </p>
             </article>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

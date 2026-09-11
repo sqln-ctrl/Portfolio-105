@@ -147,7 +147,7 @@ export const founders: Founder[] = [
     name: "Umer",
     roles: "Design / Frontend / Product",
     tagline: "Makes things feel intentional.",
-    personal: "Turns room experiments into interfaces worth shipping.",
+    personal: "Turns early ideas into interfaces worth shipping.",
     github: "https://github.com/SMPanther",
   },
   {
@@ -160,10 +160,10 @@ export const founders: Founder[] = [
 ];
 
 export const originTimeline = [
-  { label: "Room 105", detail: "Two roommates, one shared room" },
+  { label: "A shared idea", detail: "Two founders, complementary perspectives" },
   { label: "First experiments", detail: "Prototypes, tools, late-night builds" },
   { label: "First products", detail: "Real problems, real deadlines" },
-  { label: "Studio 105", detail: "The habit became the studio" },
+  { label: "Loopcodez", detail: "The habit became the studio" },
 ];
 
 export const whatWeBuild = [
@@ -177,16 +177,16 @@ export const whatWeBuild = [
 
 export const siteCopy = {
   hero: {
-    eyebrow: "Studio 105",
+    eyebrow: "Loopcodez",
     headline: "We design, build, and ship digital products with craft.",
     secondary:
-      "A creative-tech studio founded by Umer and Saqlain — two roommates who turned Room 105 into a place where ideas become shipped work.",
+      "An independent design and development studio turning ambitious ideas into digital experiences.",
     ctaPrimary: "Start a project",
     ctaSecondary: "View selected work",
   },
   about: {
-    title: "Built from the same room.",
-    body: "Studio 105 started in Room 105, where two roommates began building things together. What started as experiments, late nights, and unfinished ideas became a studio focused on turning ambitious ideas into shipped digital products.",
+    title: "Different minds. Shared ambition.",
+    body: "Loopcodez brings together Umer and Saqlain: two founders connecting thoughtful design with practical engineering. We work directly with ambitious teams to turn early ideas into useful digital products, expressive websites, and intelligent systems.",
   },
   cta: {
     title: "Have something worth building?",
@@ -194,3 +194,5 @@ export const siteCopy = {
     button: "Get in touch",
   },
 };
+
+

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, registerGsapPlugins, ScrollTrigger } from "@/lib/motion/register-gsap";
+import { gsap, registerGsapPlugins } from "@/lib/motion/register-gsap";
 import { DURATION, EASE } from "@/lib/motion/easing";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
 import { cn } from "@/lib/utils/cn";

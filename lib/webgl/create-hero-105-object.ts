@@ -331,7 +331,7 @@ export function createHero105Object(quality: Hero105Quality = "full"): Hero105Ob
       });
     });
 
-    shardSlots.forEach(({ mesh, base, velocity, tier, parallax, driftPhase }, i) => {
+    shardSlots.forEach(({ mesh, base, velocity, tier, parallax, driftPhase }) => {
       const speedMul = tier === "large" ? 0.04 : tier === "medium" ? 0.1 : 0.14;
       mesh.rotation.x += delta * speedMul;
       mesh.rotation.y += delta * speedMul * 0.75;

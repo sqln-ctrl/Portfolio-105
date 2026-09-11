@@ -19,9 +19,9 @@ export const LOADER_CRITICAL_CSS = [
   "html.site-loader-done,html.site-loader-done body{overflow:auto!important;height:auto!important;touch-action:auto!important;position:static!important}",
 ].join("");
 
-export const LOADER_BLOCK_SCRIPT = `(function(){var k="studio105-loader-seen";function hideLoader(){var el=document.querySelector(".site-loader");if(el){el.style.display="none";el.style.visibility="hidden";el.style.opacity="0";el.style.pointerEvents="none"}document.documentElement.classList.add("site-loader-done")}function finish(){document.documentElement.classList.remove("site-loader-pending");document.documentElement.style.overflow="";document.documentElement.style.backgroundColor="";document.body.classList.remove("site-loader-active");document.body.style.position="";document.body.style.inset="";document.body.style.width="";document.body.style.overflow="";document.body.style.top="";hideLoader();try{sessionStorage.setItem(k,"1")}catch(e){}window.dispatchEvent(new CustomEvent("studio105:loader-force-exit"))}try{if(sessionStorage.getItem(k)!=="1"){document.documentElement.classList.add("site-loader-pending");document.documentElement.style.overflow="hidden";document.documentElement.style.backgroundColor="#050505";window.setTimeout(finish,4000)}}catch(e){document.documentElement.classList.add("site-loader-pending");document.documentElement.style.overflow="hidden";document.documentElement.style.backgroundColor="#050505";window.setTimeout(finish,4000)}})();`;
+export const LOADER_BLOCK_SCRIPT = `(function(){var k="loopcodez-loader-seen";function hideLoader(){var el=document.querySelector(".site-loader");if(el){el.style.display="none";el.style.visibility="hidden";el.style.opacity="0";el.style.pointerEvents="none"}document.documentElement.classList.add("site-loader-done")}function finish(){document.documentElement.classList.remove("site-loader-pending");document.documentElement.style.overflow="";document.documentElement.style.backgroundColor="";document.body.classList.remove("site-loader-active");document.body.style.position="";document.body.style.inset="";document.body.style.width="";document.body.style.overflow="";document.body.style.top="";hideLoader();try{sessionStorage.setItem(k,"1")}catch(e){}window.dispatchEvent(new CustomEvent("loopcodez:loader-force-exit"))}try{if(sessionStorage.getItem(k)!=="1"){document.documentElement.classList.add("site-loader-pending");document.documentElement.style.overflow="hidden";document.documentElement.style.backgroundColor="#050505";window.setTimeout(finish,4000)}}catch(e){document.documentElement.classList.add("site-loader-pending");document.documentElement.style.overflow="hidden";document.documentElement.style.backgroundColor="#050505";window.setTimeout(finish,4000)}})();`;
 
-const LOADER_SESSION_KEY = "studio105-loader-seen";
+const LOADER_SESSION_KEY = "loopcodez-loader-seen";
 
 export const LOADER_MIN_MS = 700;
 export const LOADER_MAX_MS = 4000;
@@ -252,7 +252,7 @@ export function completeLoader(): void {
   completeListeners.forEach((listener) => listener());
   completeListeners.clear();
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent("studio105:loader-complete"));
+    window.dispatchEvent(new CustomEvent("loopcodez:loader-complete"));
   }
 }
 
@@ -277,3 +277,4 @@ export function resetLoaderGateForTests(): void {
   completeListeners.clear();
   debugListeners.clear();
 }
+

@@ -8,7 +8,7 @@ export function AmbientBackground({ variant = "section" }: AmbientBackgroundProp
       className={`ambient-bg ambient-bg--${variant}`}
       aria-hidden
     >
-      <div className="ambient-grid" />
+
       <div className="ambient-glow ambient-glow--warm" />
       <div className="ambient-glow ambient-glow--cool" />
       <div className="ambient-noise" />
@@ -41,3 +41,4 @@ export function CrosshairMark({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+

@@ -1,9 +1,11 @@
 import { LiveSitePreview } from "@/components/work/LiveSitePreview";
+import Image from "next/image";
 
 type ProjectCardVisualProps = {
   slug: string;
   title: string;
   liveUrl?: string;
+  coverUrl?: string;
   approved?: boolean;
   typeTags?: string[];
   className?: string;
@@ -14,12 +16,15 @@ export function ProjectCardVisual({
   slug,
   title,
   liveUrl,
+  coverUrl,
   approved,
   typeTags = [],
   className = "",
   ...rest
 }: ProjectCardVisualProps) {
   const dataAttrs = rest["data-card-image"] ? { "data-card-image": true } : {};
+
+  if (coverUrl) return <div className={`project-cover ${className}`} {...dataAttrs}><Image src={coverUrl} alt={`${title} project preview`} fill unoptimized sizes="(max-width: 767px) 90vw, 45vw" />{liveUrl && <a href={liveUrl} className="project-cover-live" target="_blank" rel="noopener noreferrer">Open live site ↗</a>}</div>;
 
   if (liveUrl && approved) {
     return (

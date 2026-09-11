@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getAllProjects } from "@/lib/content/projects";
+import { getProjectsForSite } from "@/lib/content/project-store";
 import { siteConfig } from "@/lib/seo/metadata";
+export const dynamic = "force-dynamic";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
   const now = new Date();
 
@@ -15,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/lab`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 
-  const projectRoutes: MetadataRoute.Sitemap = getAllProjects().map((p) => ({
+  const projectRoutes: MetadataRoute.Sitemap = (await getProjectsForSite()).map((p) => ({
     url: `${base}/work/${p.slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
@@ -24,3 +25,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...staticRoutes, ...projectRoutes];
 }
+

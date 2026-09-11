@@ -33,12 +33,15 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
     const enableScroll = () => {
       lenis.start();
+      lenis.resize();
+      ScrollTrigger.refresh();
     };
 
+    let unsubscribeLoader: (() => void) | undefined;
     if (isLoaderComplete()) {
       enableScroll();
     } else {
-      onLoaderComplete(enableScroll);
+      unsubscribeLoader = onLoaderComplete(enableScroll);
     }
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -51,6 +54,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      unsubscribeLoader?.();
       gsap.ticker.remove(tick);
       lenis.destroy();
       lenisRef.current = null;
@@ -59,3 +63,4 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
   return children;
 }
+

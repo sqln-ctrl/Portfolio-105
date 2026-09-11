@@ -108,7 +108,6 @@ type WorkCardMotionProps = {
 };
 
 export function WorkCardMotion({
-  href: _href,
   className,
   index,
   children,

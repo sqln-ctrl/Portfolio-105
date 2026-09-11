@@ -6,6 +6,7 @@ import { AmbientBackground } from "@/components/graphics/AmbientBackground";
 import { HeroFrameLines } from "@/components/graphics/HeroFrameLines";
 import { HeroScene } from "@/components/webgl/HeroScene";
 import { LineReveal } from "@/components/motion/LineReveal";
+import { ScrubFade } from "@/components/motion/ScrubFade";
 import { gsap, registerGsapPlugins } from "@/lib/motion/register-gsap";
 import { DURATION, EASE } from "@/lib/motion/easing";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
@@ -84,7 +85,7 @@ export function HeroSection() {
         <HeroScene />
       </div>
 
-      <div className="hero-content-layer container-site relative z-10 flex min-h-[100dvh] flex-col justify-between py-[calc(var(--nav-height)+1rem)] pb-6 md:py-[calc(var(--nav-height)+1.5rem)] md:pb-8">
+      <ScrubFade className="hero-content-layer container-site relative z-10 flex min-h-[100dvh] flex-col justify-between py-[calc(var(--nav-height)+1rem)] pb-6 md:py-[calc(var(--nav-height)+1.5rem)] md:pb-8">
         <div data-hero-content className="hero-copy max-w-3xl pt-2 md:pt-4">
           <p className="hero-eyebrow mb-4 md:mb-6">{hero.eyebrow}</p>
           <h1 id="hero-heading" className="hero-headline-type max-w-4xl">
@@ -117,14 +118,15 @@ export function HeroSection() {
             className="max-w-xs font-mono text-xs uppercase leading-relaxed tracking-widest text-text-subtle"
           >
             <span className="hidden md:inline">Hold to disassemble · move to tilt</span>
-            <span className="md:hidden">Studio 105 · design, build, ship</span>
+            <span className="md:hidden">Loopcodez · design, build, ship</span>
           </p>
           <div className="hidden font-mono text-xs uppercase leading-relaxed tracking-widest text-text-subtle md:block">
-            <p className="text-paper-muted">Est. Room 105</p>
+            <p className="text-paper-muted">Est. a shared idea</p>
             <p>Design · Build · Ship</p>
           </div>
         </div>
-      </div>
+      </ScrubFade>
     </section>
   );
 }
+

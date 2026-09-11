@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { SectionMarker } from "@/components/ui/SectionMarker";
 
@@ -21,9 +20,10 @@ export default function NotFound() {
           </Button>
         </div>
         <p className="mt-12 font-mono text-xs uppercase tracking-widest text-text-subtle">
-          Studio 105 · Room 105 origin
+          Loopcodez · a shared idea origin
         </p>
       </div>
     </div>
   );
 }
+

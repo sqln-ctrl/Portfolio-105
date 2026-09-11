@@ -21,7 +21,7 @@ export function AboutSection() {
         <Reveal delay={0.1} className="col-span-12 lg:col-span-6 lg:col-start-7">
           <SectionMarker index="04" label="About" className="mb-4" />
           <p className="origin-marker">
-            <span>Room 105</span>
+            <span>a shared idea</span>
             <span className="origin-marker__sep">/</span>
             <span>Origin / 001</span>
           </p>
@@ -46,3 +46,4 @@ export function AboutSection() {
     </section>
   );
 }
+
